@@ -9,12 +9,13 @@ module.exports = {
     filename: 'bundle.js'
   },
 
-  devtool: 'eval-source-map', // http://webpack.github.io/docs/configuration.html#devtool
+  devtool: 'sourcemap',
 
   module: {
     loaders: [
       { test: /\.html$/, loader: 'raw' },
-      { test: /\.styl$/, loader: 'css!style!stylus' },
+      { test: /\.styl$/, loader: 'style!css!stylus' },
+      { test: /\.css/, loader: 'style!css' },
       { test: /\.js$/, loader: 'babel?stage=1', exclude: [/client\/lib/, /node_modules/, /\.spec\.js/] }
     ]
   },
