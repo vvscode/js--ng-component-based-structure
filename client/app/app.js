@@ -2,7 +2,7 @@
 // or the from keyword when importing a css/styl file
 // thanks the the styles loader it gets added as a
 // <style> tag in the head by default but can be changed
-import 'normalize-css';
+import 'normalize.css';
 import {appDirective} from './app.directive';
 // the angular libs are just common js
 // and therefore we can assume they were
@@ -20,8 +20,8 @@ import ngAnimate from 'angular-animate';
 // we must import it with the brackets
 import {home} from './components/home/home';
 import {blog} from './components/blog/blog';
-// TODO: register common with app
-// TODO: register shared with app
+import {common} from './components/common/common';
+import {shared} from './shared/shared';
 
 angular.module('app', [
   uiRouter,
@@ -32,6 +32,8 @@ angular.module('app', [
   // property who's value is the name you set the
   // module to be
   home.name,
-  blog.name
+  blog.name,
+  common.name,
+  shared.name
 ])
 .directive('app', appDirective);

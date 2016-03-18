@@ -1,8 +1,7 @@
-// TODO: expose textbox directive to be imported directive
 import './textbox.styl';
 import template from './textbox.html';
 
-const textboxDirective = () => {
+export const textboxDirective = () => {
   return {
     template,
     restrict: 'E',
