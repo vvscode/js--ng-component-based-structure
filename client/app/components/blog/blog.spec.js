@@ -3,28 +3,17 @@ import {blogDirective} from './blog.directive';
 import template from './blog.html';
 import {BlogController} from './blog.controller';
 
-const makePostsMock = function($q) {
-  return {
-    get() {
-      const author = 'Test author';
-      const title = 'Test title';
-      return $q.when([{ author, title }]);
-    }
-  }
-};
-
 describe('Blog', () => {
   let $rootScope;
   let makeController;
 
   beforeEach(window.module(blog.name));
-  beforeEach(inject((_$rootScope_, $q) => {
+  beforeEach(inject(_$rootScope_ => {
     $rootScope = _$rootScope_;
-
     makeController = (injectables) => {
-      return new BlogController(injectables || makePostsMock($q));
+      return new BlogController(injectables);
     };
-  }));
+  }))
 
   describe('module', () => {
     it('should have an appropriate name', () => {
@@ -58,7 +47,9 @@ describe('Blog', () => {
   describe('controller', ()=> {
     it('should have blog posts', ()=> {
       const controller = makeController();
-      expect(controller.getPosts).to.be.an('function');
+      expect(controller.posts).to.be.an('array');
+      expect(controller.posts[0]).to.have.property('author');
+      expect(controller.posts[0]).to.have.property('title');
     });
   });
 

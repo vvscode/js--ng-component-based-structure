@@ -9,7 +9,6 @@ class BlogController {
     this.catpic = catpic;
     this.Posts = Posts;
     this.getPosts();
-    this.posts = [];
 
     this.search = '';
   }
